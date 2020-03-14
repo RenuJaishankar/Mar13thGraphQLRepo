@@ -1,0 +1,38 @@
+type Query {
+    bookById(id: ID): Book
+    arcadeGameById(id: ID): ArcadeGame
+    arcadeGames(match : String):[ArcadeGame!]!
+    animalById(id: ID): Animal
+    animals(match : String):[Animal!]! # The exclamation basically means that the value cannot be null
+}
+
+# This is a graphQL comment!
+# Cool, huh?
+type Animal {
+    id: ID
+    name: String
+    amountOfLegs: Int
+}
+    
+
+
+type ArcadeGame{
+     id:ID
+
+    name:String
+    amountOfPlayer:String
+
+}
+
+type Book {
+    id: ID
+    name: String
+    pageCount: Int
+    author: Author
+}
+
+type Author {
+    id: ID
+    firstName: String
+    lastName: String
+}
