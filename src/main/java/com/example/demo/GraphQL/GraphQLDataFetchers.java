@@ -3,22 +3,27 @@ package com.example.demo.GraphQL;
 
 import com.example.demo.Model.Animal;
 import com.example.demo.Model.ArcadeGame;
+import com.example.demo.Repository.AnimalRepository;
+import com.example.demo.Repository.ArcadeGameRepository;
 import com.google.common.collect.ImmutableMap;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import graphql.schema.DataFetcher;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-
+// This component acts as a way to fetch and access our data
+// You can call this component your service
+// its taking care of all of your business logic
 @Component
 public class GraphQLDataFetchers {
 
 
-//  @Autowired
-//  ArcadeGameRepository arcadeGameRepository;
-//  @Autowired
-//  AnimalRepository animalRepository;
+  @Autowired
+  ArcadeGameRepository arcadeGameRepository;
+  @Autowired
+ AnimalRepository animalRepository;
 
 
     private static List<Map<String, String>> books = Arrays.asList(

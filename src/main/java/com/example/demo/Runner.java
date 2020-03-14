@@ -19,11 +19,11 @@ import java.util.stream.StreamSupport;
 public class Runner implements CommandLineRunner {
 
     @Autowired
-    public ArcadeGameRepository arcadeGameRepository;
+    ArcadeGameRepository arcadeGameRepository;
 
 
     @Autowired
-    public AnimalRepository animalRepository;
+    AnimalRepository animalRepository;
 
 
     @Autowired
@@ -34,6 +34,7 @@ public class Runner implements CommandLineRunner {
           arcadeGameRepository.save(new ArcadeGame("Pac-man",1));
         arcadeGameRepository.save(new ArcadeGame("Ms.Pacman",1));
         arcadeGameRepository.save(new ArcadeGame("Pong",2));
+        ArcadeGame game = new ArcadeGame("pong 1",2);
         // this code block turns our repository into a workable list
         GraphQLDataFetchers.arcadeGameList = StreamSupport
                 .stream(arcadeGameRepository.findAll().spliterator(),false)
@@ -48,6 +49,8 @@ public class Runner implements CommandLineRunner {
                 .stream(animalRepository.findAll().spliterator(),false)
 
                 .collect(Collectors.toList());
+        System.out.println(testAnimal.getAmountOfLegs());
+        System.out.println(testAnimal.getName());
         System.out.println(testAnimal.getId());
         System.out.println(GraphQLDataFetchers.arcadeGameList);
         System.out.println(GraphQLDataFetchers.animalList);

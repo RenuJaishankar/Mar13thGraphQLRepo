@@ -15,7 +15,8 @@ import javax.annotation.Resource;
 import java.net.URL;
 
 import static graphql.schema.idl.TypeRuntimeWiring.newTypeWiring;
-
+// this component can be thought of as a controller
+// it takes care of the "routing" of the graphql
 @Component
 public class GraphQLProvider {
     @Autowired
@@ -40,7 +41,7 @@ public class GraphQLProvider {
 
     }
 
-    private RuntimeWiring buildWiring() {
+    private RuntimeWiring buildWiring() throws Exception{
         return RuntimeWiring.newRuntimeWiring()
       .type(newTypeWiring("Query")
                 .dataFetcher("bookById", graphQLDataFetchers.getBookByIdDataFetcher()))
@@ -57,7 +58,10 @@ public class GraphQLProvider {
                 .type(newTypeWiring("Query")
                         .dataFetcher("animalById", graphQLDataFetchers.getAnimalByIdFetcher()))
                 .build();
-    }
+
+        }
+
+
      @Bean
      public GraphQL graphQL(){
          return graphql;

@@ -10,7 +10,7 @@ public class ArcadeGame {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-    //I need to use
+    //I need to use type of Long (wrapper class) for my ID
     private String name;
     private int amountOfPlayers;
 

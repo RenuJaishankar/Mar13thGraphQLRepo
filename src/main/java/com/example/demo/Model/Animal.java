@@ -23,7 +23,7 @@ public class Animal {
     @Override
     public String toString() {
         return "Animal{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", amountOfLegs=" + amountOfLegs +
                 ", name='" + name + '\'' +
                 '}';
