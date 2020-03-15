@@ -1,5 +1,6 @@
 package com.example.demo.Model;
 
+//import javax.persistence.Entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,17 +9,35 @@ import java.util.Objects;
 
 @Entity
 public class Animal {
-    @Id
+   @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-
+    private int amountOfLegs;
+    private String name;
     public Animal(int amountOfLegs, String name) {
+              this.amountOfLegs = amountOfLegs;
+        this.name = name;
+    }
+    public Animal() {};
+    public Long getId() {
+        return id;
+    }
+    public int getAmountOfLegs() {
+        return amountOfLegs;
+    }
+
+    public void setAmountOfLegs(int amountOfLegs) {
         this.amountOfLegs = amountOfLegs;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
-    private int amountOfLegs;
-    private String name;
 
     @Override
     public String toString() {
@@ -44,26 +63,7 @@ public class Animal {
         return Objects.hash(id, amountOfLegs, name);
     }
 
-    public void setAmountOfLegs(int amountOfLegs) {
-        this.amountOfLegs = amountOfLegs;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public Long getId() {
-        return id;
-    }
-
-    public int getAmountOfLegs() {
-        return amountOfLegs;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Animal() {}
 
 }

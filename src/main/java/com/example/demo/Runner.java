@@ -29,7 +29,8 @@ public class Runner implements CommandLineRunner {
     @Autowired
     GraphQLDataFetchers graphQLDataFetchers;
     // this run method will resolve at the start of your programs runtime
-    @Override
+
+        @Override
     public void run(String... args) throws Exception {
           arcadeGameRepository.save(new ArcadeGame("Pac-man",1));
         arcadeGameRepository.save(new ArcadeGame("Ms.Pacman",1));
@@ -40,19 +41,26 @@ public class Runner implements CommandLineRunner {
                 .stream(arcadeGameRepository.findAll().spliterator(),false)
 
                 .collect(Collectors.toList());
+        System.out.println(game.getId());
         Animal testAnimal = new Animal(4,  "Wolf");
+
+
         animalRepository.save(new Animal(0,"Snake"));
         animalRepository.save(new Animal(4,"Cat"));
+
+
+            animalRepository.save(testAnimal);
 
         // this code block turns our repository into a workable list
         GraphQLDataFetchers.animalList = StreamSupport
                 .stream(animalRepository.findAll().spliterator(),false)
 
                 .collect(Collectors.toList());
-        System.out.println(testAnimal.getAmountOfLegs());
-        System.out.println(testAnimal.getName());
-        System.out.println(testAnimal.getId());
-        System.out.println(GraphQLDataFetchers.arcadeGameList);
-        System.out.println(GraphQLDataFetchers.animalList);
+
+           System.out.println("Data Saved!");
+            System.out.println(testAnimal.getId());
+            System.out.println(GraphQLDataFetchers.arcadeGameList);
+            System.out.println(GraphQLDataFetchers.animalList);
+
     }
 }
